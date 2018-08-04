@@ -16,19 +16,20 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Servlet extends HttpServlet {
 
-    private List<User> userList;
+  //  private List<User> userList;
     private Map<String, Command> commands = new HashMap<>();
 
     @Override
     public void init() throws ServletException {
-        userList = new CopyOnWriteArrayList<>();
-        userList.add(new User("Yura", 32, "Kiev"));
-        userList.add(new User("Dima", 31, "Kiev"));
-        userList.add(new User("Yarik", 30, "Aby-Daby"));
+    //    userList = new CopyOnWriteArrayList<>();
+     //   userList.add(new User("Yura", 32, "Kiev"));
+     //   userList.add(new User("Dima", 31, "Kiev"));
+     //   userList.add(new User("Yarik", 30, "Aby-Daby"));
 
 
-        commands.put("logout", new SortByTitle());
-        commands.put("list", new GoToList());
+        commands.put("/sortByTitle", new SortByTitle());
+        commands.put("/list", new GoToList());
+        commands.put("/sortByName", new GoToList());
 
 
 
@@ -43,8 +44,17 @@ public class Servlet extends HttpServlet {
         path = path.replaceAll(".*/app/" , "");
         System.out.println(path);
 
-        request.setAttribute("userList", userList);
-        request.getRequestDispatcher("list.jsp").forward(request, response);
+
+        Command command = commands.getOrDefault(path ,
+                (r)->"/index.jsp)");
+
+
+
+        String page = command.execute(request);
+        System.out.println("Page = " + page);
+
+       // request.setAttribute("userList", userList);
+        request.getRequestDispatcher(page).forward(request, response);
 
     }
 

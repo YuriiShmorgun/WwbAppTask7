@@ -10,10 +10,10 @@
 <body>
 
 <h2>Hello servlet</h2>
-<c:forEach var="note" items="${requestScope.userList}">
+<c:forEach var="user" items="${requestScope.userList}">
     <ul>
         <li>
-            rrt
+            Name: <c:out value="${user.name}"/> Age: <c:out value="${user.age}"/>
         </li>
     </ul>
     <hr/>
@@ -22,4 +22,5 @@
 
 
     <label><a href="/sortByTitle"><button onclick="">Sort by title</button></a></label>
+    <label><a href="/sortByName"><button onclick="">sortByName</button></a></label>
 </html>

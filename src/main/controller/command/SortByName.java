@@ -2,9 +2,10 @@ package controller.command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class SortByTitle implements Command {
+public class SortByName implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        return "index.jsp";
+
+        return "list.jsp";
     }
 }
