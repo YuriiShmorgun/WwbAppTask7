@@ -1,0 +1,25 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+
+
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Hello servlet</h2>
+<c:forEach var="note" items="${requestScope.userList}">
+    <ul>
+        <li>
+            rrt
+        </li>
+    </ul>
+    <hr/>
+</c:forEach>
+</body>
+
+
+    <label><a href="/sortByTitle"><button onclick="">Sort by title</button></a></label>
+</html>
